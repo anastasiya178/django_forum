@@ -14,6 +14,9 @@ from pathlib import Path
 
 from decouple import config
 
+# Reads value from .env. Determines whether local (0) or prod (1) set-up is used.
+IS_SERVER = config('IS_SERVER') == '1'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
@@ -79,12 +82,26 @@ WSGI_APPLICATION = 'forum_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Prod set-up uses postgres
+if IS_SERVER:
+    DATABASES = {
+        "default": {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME'),
+            'HOST': config('DB_HOST'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'PORT': '5432',
+        }
     }
-}
+# Local set-up uses sqlite3
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
