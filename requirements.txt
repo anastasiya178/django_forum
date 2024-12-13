@@ -1,2 +1,2 @@
-django
-decouple
+django==4.2.17
+python-decouple==3.8
