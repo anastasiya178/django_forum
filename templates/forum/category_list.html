@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2>Portal navigation </h2>
+        {% if not category_list %}
+            <p> No categories added yet </p>
+        {% endif %}
+        <ul>
+            {% for category in category_list %}
+                <li><a href={% url 'forum:category_detail' c_pk=category.pk %}>{{ category }}</a></li>
+{#                    <ul>#}
+{#                        {% for subcategory in category.subcategory_set.all %}#}
+{#                            <li>#}
+{#                                 <a href={% url 'forum:subcategory_detail' pk=subcategory.pk %}>{{ subcategory }}</a>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
