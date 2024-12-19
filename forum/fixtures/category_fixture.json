@@ -1,0 +1,42 @@
+[
+  {
+    "model": "forum.category",
+    "pk": 4,
+    "fields": {
+      "name": "Hobbies",
+      "restricted": false
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 5,
+    "fields": {
+      "name": "Technologies",
+      "restricted": false
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 6,
+    "fields": {
+      "name": "Talks",
+      "restricted": false
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 7,
+    "fields": {
+      "name": "Company Management",
+      "restricted": true
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 8,
+    "fields": {
+      "name": "HR policies",
+      "restricted": true
+    }
+  }
+]
