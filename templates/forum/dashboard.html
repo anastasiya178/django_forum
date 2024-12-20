@@ -5,17 +5,26 @@
 {% block title %}<title>Dashboard</title>{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class='row'>
-            <div class="col-sm-4">
-                <img width="200" height="200" src="{% static '/images/logo.png' %}">
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                        <h1 class="jumbotron-heading">Corporate portal</h1>
+                        <p>Welcome to the Portal<br>
+                            Here you can find useful information about the Company.</p>
             </div>
-            <div class="col-sm-8">
-                <h1>Corporate portal</h1>
-                <p>Welcome to the Board.<br>
-                    Here you can find useful information about the Company.</p>
-                <br>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm" style="flex-grow: 3">
+                        {% if latest_posts %}
+                            <h2>Recent Updates</h2>
+                        {% else %}
+                            <p>No posts added</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 {% endblock %}
